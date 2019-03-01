@@ -1,4 +1,4 @@
-# rabbitmq_cluster
+# RabbitMQ Cluster Challenge
 Vagrant Ansible RabbitMQ Cluster Challenge
 
 This repository is for a demo of installing and configuring a very basic RabbitMQ Cluster.

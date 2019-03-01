@@ -7,7 +7,7 @@ It uses Vagrant to create virtual machines and Ansible to configure RabbitMQ.
 
 # Setup
 Windows 10 was the base operating system, with following pre requisites installed:
-* Git Bash or some other tool for cloning Git repositories
+* Git Bash
 * VirtualBox (v6.0 Used)
 * Vagrant (v2.2.4 Used)
   * vagrant-hosts plugin installed

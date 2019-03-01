@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"owner":"vagrant","group":"vagrant","mount_options":["dmode=755,fmode=664","uid=1000","gid=1000"],"guestpath":"/vagrant","hostpath":"D:/vagrant-challenge","disabled":false,"__vagrantfile":true}}}

@@ -1,0 +1,24 @@
+---
+
+- name: Administrator user is created for RabbitMQ
+  rabbitmq_user:
+    user: rabbitmq_admin
+    password: changeme
+    tags: administrator
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
+  
+- name: Guest user is removed for RabbitMQ
+  rabbitmq_user:
+    user: guest
+    state: absent
+
+- name: Cluster policy is setup for RabbitMQ
+  rabbitmq_policy:
+    name: HA
+    pattern: .*
+    tags:
+      ha-mode: all

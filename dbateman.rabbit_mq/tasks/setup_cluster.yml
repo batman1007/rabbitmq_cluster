@@ -1,0 +1,21 @@
+---
+
+- name: erlang cookie is copied to other nodes
+  copy:
+    content: "{{ rabbitmq_erlang_cookie }}"
+    dest: /var/lib/rabbitmq/.erlang.cookie
+    owner: rabbitmq
+    group: rabbitmq
+    mode: '0400'
+  notify: Restarted RabbitMQ Service
+  register: copy_cookie
+
+- meta: flush_handlers
+  
+- name: Join cluster
+  command: "{{ item }}"
+  with_items:
+    - rabbitmqctl stop_app
+    - rabbitmqctl join_cluster rabbit@node01
+    - rabbitmqctl start_app
+  when: copy_cookie is changed

@@ -1,0 +1,19 @@
+---
+
+- import_tasks: pre_reqs.yml
+  become: true
+
+- import_tasks: setup_mgmt.yml
+  become: true
+
+- import_tasks: get_cookie.yml
+  become: true
+  delegate_to: node01
+  
+- import_tasks: setup_cluster.yml
+  become: true
+  when: not ansible_hostname == "node01"
+
+- import_tasks: setup_users_policy.yml
+  become: true
+  when: ansible_hostname == "node01"

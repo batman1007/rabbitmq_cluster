@@ -1,0 +1,17 @@
+---
+
+- name: stat erlang cookie file
+  stat:
+    path: /var/lib/rabbitmq/.erlang.cookie
+  register: erlang_cookie
+  
+- name: Erlang cookie read
+  slurp:
+    src: /var/lib/rabbitmq/.erlang.cookie
+  register: slurp_erlang_file
+  when: erlang_cookie.stat.exists
+
+- name: fact set for erlang cookie
+  set_fact:
+    rabbitmq_erlang_cookie: "{{ slurp_erlang_file['content'] | b64decode }}"
+  when: erlang_cookie.stat.exists

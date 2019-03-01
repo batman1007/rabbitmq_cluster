@@ -1,0 +1,15 @@
+---
+
+- name: Management RabbitMQ plugin enabled
+  rabbitmq_plugin:
+    names: rabbitmq_management
+    state: enabled
+  notify: Restarted RabbitMQ Service
+
+- meta: flush_handlers
+
+- name: Ensure mgmt web is up
+  uri:
+    url: http://localhost:15672
+    method: GET
+    status_code: 200

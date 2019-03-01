@@ -1,0 +1,22 @@
+---
+
+- name: Vagrant prv key files
+  hosts: node01
+  tasks:
+    - name: set permissions on prv key files
+      copy:
+        src: /vagrant/.vagrant/machines/{{ item }}/virtualbox/private_key
+        dest: "~vagrant/{{ item }}"
+        mode: '0400'
+        owner: vagrant
+        group: vagrant
+      with_items:
+        - node02
+        - node03
+      become: true
+
+- name: Setup RabbitMQ
+  hosts: all
+  roles:
+    - dbateman.rabbit_mq
+

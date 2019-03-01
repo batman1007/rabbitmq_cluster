@@ -1,0 +1,7 @@
+---
+
+- name: Restarted RabbitMQ Service
+  systemd:
+    name: rabbitmq-server
+    state: restarted
+  become: true

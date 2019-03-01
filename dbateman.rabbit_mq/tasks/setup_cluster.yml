@@ -7,6 +7,7 @@
     owner: rabbitmq
     group: rabbitmq
     mode: '0400'
+  when: not ansible_hostname == "node01"
   notify: Restarted RabbitMQ Service
   register: copy_cookie
 
@@ -18,4 +19,4 @@
     - rabbitmqctl stop_app
     - rabbitmqctl join_cluster rabbit@node01
     - rabbitmqctl start_app
-  when: copy_cookie is changed
+  when: copy_cookie is changed and not ansible_hostname == "node01"

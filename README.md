@@ -18,4 +18,4 @@ It assumes that you are not behind a proxy and you have full internet access wit
 * Install above software
 * Clone this repo (Please make sure that your git program does not reset line endings on files as this will create problems when running - they must be set to Unix EOL)
 * Run 'vagrant up' in the cloned repo folder
-* Browse to http://10.1.172.21:15672 to check the setup of RabbitMQ
+* Browse to http://10.1.172.21:15672 to check the setup of RabbitMQ (Use: rabbitmq_admin / changeme to login)
